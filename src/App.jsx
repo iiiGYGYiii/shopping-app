@@ -1,7 +1,7 @@
 import { Route } from "wouter";
 
-import { Header } from "./components/components.js";
-import { HomePage, ShopPage, LogSignUpPage } from "./pages/pages.js";
+import { Header } from "./components/components";
+import { HomePage, ShopPage, LogSignUpPage } from "./pages/pages";
 
 const App = () => {
   return (

@@ -1,6 +1,6 @@
 import "./homepage.styles.scss";
 
-import { Directory } from "../../components/components.js";
+import { Directory } from "../../components/components";
 
 const HomePage = () => {
   return (

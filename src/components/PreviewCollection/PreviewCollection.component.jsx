@@ -1,6 +1,6 @@
 import "./PreviewCollection.styles.scss";
 
-import { CollectionItem } from "../components.js";
+import { CollectionItem } from "../components";
 
 const PreviewCollection = ({ title, items }) => {
   return (

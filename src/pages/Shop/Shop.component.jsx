@@ -2,8 +2,8 @@ import { Component } from "react";
 
 import "./Shop.styles.scss";
 
-import { PreviewCollection } from "../../components/components.js";
-import { SHOP_DATA } from "./Shop.data.js";
+import { PreviewCollection } from "../../components/components";
+import { SHOP_DATA } from "./Shop.data";
 
 class ShopPage extends Component {
   constructor(props) {
