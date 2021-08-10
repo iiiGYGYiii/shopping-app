@@ -1,7 +1,2 @@
-import HomePage from "./HomePage/homepage.component.jsx";
-
-const exports = {
-  HomePage,
-};
-
-export default exports;
+export {default as MenuItem} from "./MenuItem/MenuItem.component.jsx";
+export { default as Directory } from "./Directory/Directory.component.jsx";
