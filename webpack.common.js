@@ -6,31 +6,29 @@ module.exports = {
   output: {
     path: path.join(__dirname, "build"),
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
         test: /\.s?css$/i,
-        use:[
-          "css-loader",
-          "sass-loader",
-        ],
+        use: ["css-loader", "sass-loader"],
       },
       {
         test: /\.jsx?$/i,
-        use:{
+        use: {
           loader: "babel-loader",
-          options:{
-            presets:[
-              "@babel/preset-env",
-              "@babel/preset-react",
-            ],
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
             compact: false,
           },
         },
-      }
-    ]
+      },
+      {
+        test: /\.svg$/i,
+        type: "asset/inline",
+      },
+    ],
   },
-  plugins:[
+  plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
     }),
