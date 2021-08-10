@@ -5,10 +5,14 @@
   justify-content: space-between;
   margin-bottom: 25px;
 
-  .logo {
-    height: 3.75rem;
-    padding: 0;
-    margin-left: 1rem;
+  .logo-container {
+    margin: auto 0px;
+    margin-left: 1.5rem;
+  }
+  .logo,
+  .logo-container {
+    width: 4rem;
+    height: 100%;
   }
 
   .options {

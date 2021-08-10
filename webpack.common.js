@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.svg$/i,
-        type: "asset/inline",
+        use: ["babel-loader", "react-svg-loader"],
       },
     ],
   },
