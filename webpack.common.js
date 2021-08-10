@@ -18,6 +18,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/i,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
@@ -43,4 +44,7 @@ module.exports = {
       extensions: ["js", "jsx"],
     }),
   ],
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
 };
