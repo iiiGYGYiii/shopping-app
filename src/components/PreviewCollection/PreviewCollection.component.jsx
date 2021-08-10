@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./PreviewCollection.styles.scss";
 
 import { CollectionItem } from "../components.js";

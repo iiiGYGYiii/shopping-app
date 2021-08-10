@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// eslint-disable-next-line no-unused-vars
+const { webpack, ProvidePlugin } = require("webpack");
+const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
@@ -32,6 +35,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
+    }),
+    new ProvidePlugin({
+      React: "react",
+    }),
+    new ESLintWebpackPlugin({
+      extensions: ["js", "jsx"],
     }),
   ],
 };

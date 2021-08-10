@@ -1,4 +1,3 @@
-import React from "react";
 import { Route } from "wouter";
 
 import { Header } from "./components/components.js";
