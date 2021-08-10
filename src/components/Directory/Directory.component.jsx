@@ -17,12 +17,10 @@ class Directory extends Component {
     const { sections } = this.state;
     return (
       <div className="directory-menu">
-        {sections.map((section) => (
+        {sections.map(({ id, ...otherSectionProps }) => (
           <MenuItem
-            key={section.id}
-            title={section.title.toUpperCase()} 
-            imageUrl={section.imageUrl}
-            size={section.size}
+            key={ id }
+            { ...otherSectionProps }
           />
         ))}
       </div>
