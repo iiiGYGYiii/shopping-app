@@ -2,28 +2,26 @@ const { mergeWithRules } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
 module.exports = mergeWithRules({
-  module:{
-    rules:{
+  module: {
+    rules: {
       test: "match",
       use: "prepend",
     },
   },
-})(common,{
+})(common, {
   mode: "development",
   devtool: "inline-source-map",
-  devServer:{
+  devServer: {
     contentBase: "./build",
     port: 3000,
     historyApiFallback: true,
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
         test: /\.s?css$/i,
-        use:[
-          "style-loader",
-        ],
+        use: ["style-loader"],
       },
-    ]
+    ],
   },
 });
