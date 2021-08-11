@@ -19,9 +19,7 @@ const App = () => {
             });
           });
         } else {
-          setUser({
-            userAuth,
-          });
+          setUser(userAuth);
         }
       }),
     []

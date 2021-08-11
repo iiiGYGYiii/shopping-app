@@ -4,6 +4,7 @@ import "./LogIn.styles.scss";
 
 import { FormInput, CustomButton } from "../components";
 import { signInWithGoogle } from "../../services/firebase.utils";
+import { passwordValidations } from "../../utils/validation.utils";
 
 const LogIn = () => {
   const {
@@ -35,13 +36,7 @@ const LogIn = () => {
           id={"password"}
           register={register}
           required
-          options={{
-            pattern: {
-              value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/,
-              message:
-                "Password must have length 8 and includes both a capital an lower case.",
-            },
-          }}
+          options={passwordValidations}
         />
         {errors.password && `${errors.password.message}`}
         <div className="buttons">
