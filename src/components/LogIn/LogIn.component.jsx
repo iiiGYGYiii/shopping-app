@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import "./LogIn.styles.scss";
 
 import { FormInput, CustomButton } from "../components";
-import { signInWithGoogle } from "../../services/firebase.utils";
-import { passwordValidations } from "../../utils/validation.utils";
+import { auth, signInWithGoogle } from "../../services/firebase.utils";
 
 const LogIn = () => {
   const {
@@ -14,14 +13,19 @@ const LogIn = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const submitAction = handleSubmit((data) => {
-    reset();
-    console.log(data);
+  const submitAction = handleSubmit(async (data) => {
+    const { email, password } = data;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   });
   return (
     <div className="log-in">
       <h2>I already have an account</h2>
-      <span>Sign in with your email and password</span>
+      <span>Log in with your email and password</span>
       <form onSubmit={submitAction}>
         <FormInput
           value={watch("email")}
@@ -36,7 +40,6 @@ const LogIn = () => {
           id={"password"}
           register={register}
           required
-          options={passwordValidations}
         />
         {errors.password && `${errors.password.message}`}
         <div className="buttons">
