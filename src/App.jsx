@@ -3,11 +3,18 @@ import { Route } from "wouter";
 
 import { Header } from "./components/components";
 import { HomePage, ShopPage, LogSignUpPage } from "./pages/pages";
-import { auth } from "./services/firebase.utils";
+import { auth, createUserProfileDocument } from "./services/firebase.utils";
 
 const App = () => {
   const [user, setUser] = useState({});
-  useEffect(() => auth.onAuthStateChanged((user) => setUser(user)), [user]);
+  useEffect(
+    () =>
+      auth.onAuthStateChanged((user) => {
+        setUser(user);
+        createUserProfileDocument(user);
+      }),
+    [user]
+  );
   return (
     <div className="App">
       <Header currentUser={user} />
