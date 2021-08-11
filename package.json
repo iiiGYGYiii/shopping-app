@@ -25,8 +25,10 @@
   "homepage": "https://github.com/iiiGYGYiii/shopping-app#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "firebase": "^8.9.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.12.2",
     "wouter": "^2.7.4"
   },
   "devDependencies": {

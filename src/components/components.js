@@ -1,5 +1,9 @@
-export { default as MenuItem } from "./MenuItem/MenuItem.component.jsx";
-export { default as Directory } from "./Directory/Directory.component.jsx";
-export { default as PreviewCollection } from "./PreviewCollection/PreviewCollection.component.jsx";
-export { default as CollectionItem } from "./CollectionItem/CollectionItem.component.jsx";
-export { default as Header } from "./Header/Header.component.jsx";
+export { default as MenuItem } from "./MenuItem/MenuItem.component";
+export { default as Directory } from "./Directory/Directory.component";
+export { default as PreviewCollection } from "./PreviewCollection/PreviewCollection.component";
+export { default as CollectionItem } from "./CollectionItem/CollectionItem.component";
+export { default as Header } from "./Header/Header.component";
+export { default as SignUp } from "./SignUp/SignUp.component";
+export { default as LogIn } from "./LogIn/LogIn.component";
+export { default as FormInput } from "./FormInput/FormInput.component";
+export { default as CustomButton } from "./CustomButton/CustomButton.component";
