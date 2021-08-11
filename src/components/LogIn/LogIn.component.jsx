@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import "./LogIn.styles.scss";
 
 import { FormInput, CustomButton } from "../components";
+import { signInWithGoogle } from "../../services/firebase.utils";
 
 const LogIn = () => {
   const {
@@ -13,7 +14,6 @@ const LogIn = () => {
     formState: { errors },
   } = useForm();
   const submitAction = handleSubmit((data) => {
-    console.log(errors);
     reset();
     console.log(data);
   });
@@ -44,7 +44,12 @@ const LogIn = () => {
           }}
         />
         {errors.password && `${errors.password.message}`}
-        <CustomButton type="submit">Log In</CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">Log In</CustomButton>
+          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            Log In with Google
+          </CustomButton>
+        </div>
       </form>
     </div>
   );
