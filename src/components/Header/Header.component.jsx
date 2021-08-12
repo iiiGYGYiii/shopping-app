@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { useSelector } from "react-redux";
 import { auth } from "../../services/firebase.utils";
 
 import "./Header.styles.scss";
 import Logo from "../../assets/1444714083.svg";
+import { CartIcon, CartDropdown } from "../components";
 
 const userSelector = (state) => state.user.currentUser;
 
 const Header = () => {
+  const [show, setShow] = useState(false);
+  const handleCartClick = () => setShow((prevState) => !prevState);
   const currentUser = useSelector(userSelector);
   return (
     <nav className="header">
@@ -30,7 +34,9 @@ const Header = () => {
         ) : (
           <Link to="/sign-in">LOG IN</Link>
         )}
+        <CartIcon handleClick={handleCartClick} />
       </div>
+      {show && <CartDropdown />}
     </nav>
   );
 };

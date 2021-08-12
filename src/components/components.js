@@ -7,3 +7,5 @@ export { default as SignUp } from "./SignUp/SignUp.component";
 export { default as LogIn } from "./LogIn/LogIn.component";
 export { default as FormInput } from "./FormInput/FormInput.component";
 export { default as CustomButton } from "./CustomButton/CustomButton.component";
+export { default as CartIcon } from "./CartIcon/CartIcon.component";
+export { default as CartDropdown } from "./CartDropdown/CartDropdown.component";
