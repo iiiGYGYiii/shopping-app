@@ -38,11 +38,9 @@ const App = () => {
       <Header />
       <Route path="/" component={HomePage} />
       <Route path="/shop" component={ShopPage} />
-      {user ? (
-        <Redirect to="/" />
-      ) : (
-        <Route path="/sign-in" component={LogSignUpPage} />
-      )}
+      <Route path="/sign-in">
+        {user ? <Redirect to="/" /> : <LogSignUpPage />}
+      </Route>
     </div>
   );
 };
