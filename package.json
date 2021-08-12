@@ -4,7 +4,7 @@
   "description": "Frontend of a Shopping App created with React and bundled with WebPack",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose --watch",
     "dev": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
@@ -33,17 +33,23 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "css-minimizer-webpack-plugin": "^3.0.2",
     "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-webpack-plugin": "^3.0.1",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
     "mini-css-extract-plugin": "^2.2.0",
     "react-svg-loader": "^3.0.3",
     "sass": "^1.37.5",
@@ -53,5 +59,12 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
   }
 }
