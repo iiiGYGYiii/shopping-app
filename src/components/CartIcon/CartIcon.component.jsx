@@ -4,11 +4,11 @@ import "./CartIcon.styles.scss";
 
 import ShoppingIcon from "../../assets/shopping-bag.svg";
 
-const lengthCartSelector = (state) =>
-  state.cart.map((c) => c.qty).reduce((p, c) => p + c, 0);
+const totalCartItemsSelector = (state) =>
+  state.cart.reduce((p, { qty }) => p + qty, 0);
 
 const CartIcon = ({ handleClick }) => {
-  const itemsInCart = useSelector(lengthCartSelector);
+  const itemsInCart = useSelector(totalCartItemsSelector);
   return (
     <div className="cart-icon" onClick={handleClick}>
       <ShoppingIcon className="shopping-icon" />
