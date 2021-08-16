@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Redirect, Route } from "wouter";
+import { Redirect, Route, Switch } from "wouter";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, createUserProfileDocument } from "./services/firebase.utils";
 import { setCurrentUser } from "./redux/reducers/user.reducer";
@@ -36,11 +36,13 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Route path="/" component={HomePage} />
-      <Route path="/shop" component={ShopPage} />
-      <Route path="/sign-in">
-        {user ? <Redirect to="/" /> : <LogSignUpPage />}
-      </Route>
+      <Switch>
+        <Route path="/shop" component={ShopPage} />
+        <Route path="/sign-in">
+          {user ? <Redirect to="/" /> : <LogSignUpPage />}
+        </Route>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
     </div>
   );
 };
