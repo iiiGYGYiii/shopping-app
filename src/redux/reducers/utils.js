@@ -20,3 +20,19 @@ export const addItemToCart = (cartItems, item) => {
     c.id === item.id ? { ...c, qty: c.qty + 1 } : c
   );
 };
+
+export const increaseItemQty = (cartItems, item) => {
+  return cartItems.map((cartItem) =>
+    cartItem.id === item.id ? { ...cartItem, qty: cartItem.qty + 1 } : cartItem
+  );
+};
+
+export const decreaseItemQty = (cartItems, item) => {
+  return cartItems
+    .map((cartItem) =>
+      cartItem.id === item.id
+        ? { ...cartItem, qty: cartItem.qty - 1 }
+        : cartItem
+    )
+    .filter((cartItem) => cartItem.qty > 0);
+};
