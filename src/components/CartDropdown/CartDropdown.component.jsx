@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "wouter";
 
 import "./CartDropdown.styles.scss";
 
@@ -17,9 +18,9 @@ const CartDropdown = () => {
           <span className="empty-message">Your cart is empty.</span>
         )}
       </div>
-      <a href="/checkout" className="custom-button">
+      <Link href="/checkout" className="custom-button">
         GO TO CHECKOUT
-      </a>
+      </Link>
     </div>
   );
 };
