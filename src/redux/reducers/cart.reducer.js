@@ -6,6 +6,7 @@ const actions = {
   ADD_ITEM: "cart/ADD_ITEM",
   INCREASE_ITEM_QTY: "cart/INCREASE_ITEM_QTY",
   DECREASE_ITEM_QTY: "cart/DECREASE_ITEM_QTY",
+  REMOVE_ITEM: "cart/REMOVE_ITEM",
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -16,6 +17,8 @@ const cartReducer = (state = initialState, action) => {
       return increaseItemQty(state, action.payload);
     case actions.DECREASE_ITEM_QTY:
       return decreaseItemQty(state, action.payload);
+    case actions.REMOVE_ITEM:
+      return state.filter((item) => item.id !== action.payload);
     default:
       return state;
   }
@@ -39,6 +42,11 @@ export const increaseQtyAction = (item) => ({
 export const decreaseQtyAction = (item) => ({
   type: actions.DECREASE_ITEM_QTY,
   payload: item,
+});
+
+export const removeItemAction = (id) => ({
+  type: actions.REMOVE_ITEM,
+  payload: id,
 });
 
 export default cartReducer;

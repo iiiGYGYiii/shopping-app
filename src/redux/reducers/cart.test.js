@@ -2,6 +2,7 @@ import cartReducer, {
   addItemAction,
   decreaseQtyAction,
   increaseQtyAction,
+  removeItemAction,
 } from "./cart.reducer";
 import { SHOP_DATA } from "../../pages/Shop/Shop.data";
 
@@ -98,6 +99,20 @@ describe("Test for Cart Reducer", () => {
       );
 
       expect(newState).toHaveLength(0);
+    });
+
+    test("An item can be removed", () => {
+      const item1 = { ...SHOP_DATA[0].items[2], qty: 1 };
+      const item2 = { ...SHOP_DATA[0].items[5], qty: 1 };
+      const item3 = { ...SHOP_DATA[0].items[7], qty: 1 };
+      const initialState = [item1, item2, item3];
+
+      const newState = cartReducer(initialState, removeItemAction(item1.id));
+
+      expect(newState).toHaveLength(initialState.length - 1);
+      expect(newState).toEqual(
+        initialState.filter((item) => item.id !== item1.id)
+      );
     });
   });
 });
