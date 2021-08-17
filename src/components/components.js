@@ -11,3 +11,4 @@ export { default as CartIcon } from "./CartIcon/CartIcon.component";
 export { default as CartDropdown } from "./CartDropdown/CartDropdown.component";
 export { default as CartItem } from "./CartItem/CartItem.component";
 export { default as CheckoutItem } from "./CheckoutItem/CheckoutItem.component";
+export { default as CollectionsOverview } from "./CollectionsOverview/CollectionsOverview.component";

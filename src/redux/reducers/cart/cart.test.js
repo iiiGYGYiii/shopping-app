@@ -4,7 +4,7 @@ import cartReducer, {
   increaseQtyAction,
   removeItemAction,
 } from "./cart.reducer";
-import { SHOP_DATA } from "../../pages/Shop/Shop.data";
+import { SHOP_DATA } from "../../../pages/Shop/Shop.data";
 
 describe("Test for Cart Reducer", () => {
   test("Empty state returns a proper state", () => {
