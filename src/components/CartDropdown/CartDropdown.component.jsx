@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import "./CartDropdown.styles.scss";
 
-import { CustomButton, CartItem } from "../components.js";
+import { CartItem } from "../components.js";
 
 const cartSelector = (state) => state.cart;
 
@@ -11,11 +11,15 @@ const CartDropdown = () => {
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
-        {cart.map((cartItem) => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))}
+        {cart.length ? (
+          cart.map((cartItem) => <CartItem key={cartItem.id} item={cartItem} />)
+        ) : (
+          <span className="empty-message">Your cart is empty.</span>
+        )}
       </div>
-      <CustomButton>GO TO CHECKOUT</CustomButton>
+      <a href="/checkout" className="custom-button">
+        GO TO CHECKOUT
+      </a>
     </div>
   );
 };

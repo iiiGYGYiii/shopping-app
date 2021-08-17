@@ -5,7 +5,7 @@ import { auth, createUserProfileDocument } from "./services/firebase.utils";
 import { setCurrentUser } from "./redux/reducers/user.reducer";
 
 import { Header } from "./components/components";
-import { HomePage, ShopPage, LogSignUpPage } from "./pages/pages";
+import { HomePage, ShopPage, LogSignUpPage, CheckoutPage } from "./pages/pages";
 
 const currentUserSelector = (state) => state.user.currentUser;
 
@@ -37,11 +37,12 @@ const App = () => {
     <div className="App">
       <Header />
       <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/checkout" component={CheckoutPage} />
         <Route path="/shop" component={ShopPage} />
         <Route path="/sign-in">
           {user ? <Redirect to="/" /> : <LogSignUpPage />}
         </Route>
-        <Route exact path="/" component={HomePage} />
       </Switch>
     </div>
   );
