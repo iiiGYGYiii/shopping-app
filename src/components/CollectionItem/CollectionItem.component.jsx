@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addItemAction } from "../../redux/reducers/cart.reducer";
+import { addItemAction } from "../../redux/reducers/cart/cart.reducer";
 
 import "./CollectionItem.styles.scss";
 

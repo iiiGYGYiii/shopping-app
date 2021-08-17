@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Redirect, Route, Switch } from "wouter";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, createUserProfileDocument } from "./services/firebase.utils";
-import { setCurrentUser } from "./redux/reducers/user.reducer";
+import { setCurrentUser } from "./redux/reducers/user/user.reducer";
 
 import { Header } from "./components/components";
 import { HomePage, ShopPage, LogSignUpPage, CheckoutPage } from "./pages/pages";

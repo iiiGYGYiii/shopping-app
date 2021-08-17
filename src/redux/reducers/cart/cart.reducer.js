@@ -1,4 +1,4 @@
-import { addItemToCart, increaseItemQty, decreaseItemQty } from "./utils";
+import { addItemToCart, increaseItemQty, decreaseItemQty } from "../utils";
 
 const initialState = [];
 

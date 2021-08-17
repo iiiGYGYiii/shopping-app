@@ -6,5 +6,11 @@ describe("Test root reducer.", () => {
       const state = rootReducer(undefined, { type: undefined });
       expect(state).toHaveProperty("user");
     });
+
+    test("Root Reducer contains state of Directory Reducer", () => {
+      const state = rootReducer(undefined, { type: undefined });
+
+      expect(state).toHaveProperty("directory");
+    });
   });
 });

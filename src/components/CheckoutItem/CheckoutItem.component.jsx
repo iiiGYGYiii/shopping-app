@@ -6,7 +6,7 @@ import {
   removeItemAction,
   increaseQtyAction,
   decreaseQtyAction,
-} from "../../redux/reducers/cart.reducer";
+} from "../../redux/reducers/cart/cart.reducer";
 
 const CheckoutItem = ({ cartItem: { name, imageUrl, price, qty, id } }) => {
   const dispatch = useDispatch();
