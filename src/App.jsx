@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, createUserProfileDocument } from "./services/firebase.utils";
 import { setCurrentUser } from "./redux/reducers/user/user.reducer";
 
-import { Header } from "./components/components";
+import { Header, Scope } from "./components/components";
 import { HomePage, ShopPage, LogSignUpPage, CheckoutPage } from "./pages/pages";
 
 const currentUserSelector = (state) => state.user.currentUser;
@@ -39,10 +39,12 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/checkout" component={CheckoutPage} />
-        <Route path="/shop" component={ShopPage} />
         <Route path="/sign-in">
           {user ? <Redirect to="/" /> : <LogSignUpPage />}
         </Route>
+        <Scope base="/shop">
+          <ShopPage />
+        </Scope>
       </Switch>
     </div>
   );
