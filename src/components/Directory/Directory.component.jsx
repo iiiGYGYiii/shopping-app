@@ -11,7 +11,6 @@ const Directory = () => {
   const { sections } = useSelector(
     createStructuredSelector({ sections: selectDirectorySections })
   );
-  console.log(sections);
   return (
     <div className="directory-menu">
       {sections.map(({ id, ...otherSectionProps }) => (
