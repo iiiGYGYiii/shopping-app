@@ -26,7 +26,7 @@ describe("Test for Cart Reducer", () => {
   describe("Test for Cart Actions", () => {
     test("Add Item action adds item to state", () => {
       const state = cartReducer([], { type: undefined });
-      const item = SHOP_DATA[0].items[2];
+      const item = SHOP_DATA.hats.items[2];
 
       const newState = cartReducer(state, addItemAction(item));
 
@@ -38,7 +38,7 @@ describe("Test for Cart Reducer", () => {
     });
 
     test("Test for adding same item multiple times, not to duplicate, but to increase qty", () => {
-      const item = SHOP_DATA[0].items[2];
+      const item = SHOP_DATA.hats.items[2];
       const state = cartReducer([], { type: undefined });
 
       const preState = cartReducer(state, addItemAction(item));
@@ -54,12 +54,12 @@ describe("Test for Cart Reducer", () => {
     test("Increase qty of item by 1", () => {
       const preState = cartReducer(
         undefined,
-        addItemAction(SHOP_DATA[0].items[2])
+        addItemAction(SHOP_DATA.hats.items[2])
       );
 
       const state = cartReducer(
         preState,
-        increaseQtyAction(SHOP_DATA[0].items[2])
+        increaseQtyAction(SHOP_DATA.hats.items[2])
       );
 
       expect(state).toBeDefined();
@@ -67,7 +67,7 @@ describe("Test for Cart Reducer", () => {
 
       const newState = cartReducer(
         state,
-        increaseQtyAction(SHOP_DATA[0].items[2])
+        increaseQtyAction(SHOP_DATA.hats.items[2])
       );
 
       expect(newState).toBeDefined();
@@ -75,12 +75,12 @@ describe("Test for Cart Reducer", () => {
     });
 
     test("Decrease qty of item by 1", () => {
-      const item = { ...SHOP_DATA[0].items[2], qty: 4 };
+      const item = { ...SHOP_DATA.hats.items[2], qty: 4 };
       const preState = [item];
 
       const state = cartReducer(
         preState,
-        decreaseQtyAction(SHOP_DATA[0].items[2])
+        decreaseQtyAction(SHOP_DATA.hats.items[2])
       );
 
       expect(state).toBeDefined();
@@ -90,21 +90,21 @@ describe("Test for Cart Reducer", () => {
     });
 
     test("When qty is 0 remove item", () => {
-      const item = { ...SHOP_DATA[0].items[2], qty: 1 };
+      const item = { ...SHOP_DATA.hats.items[2], qty: 1 };
       const state = [item];
 
       const newState = cartReducer(
         state,
-        decreaseQtyAction(SHOP_DATA[0].items[2])
+        decreaseQtyAction(SHOP_DATA.hats.items[2])
       );
 
       expect(newState).toHaveLength(0);
     });
 
     test("An item can be removed", () => {
-      const item1 = { ...SHOP_DATA[0].items[2], qty: 1 };
-      const item2 = { ...SHOP_DATA[0].items[5], qty: 1 };
-      const item3 = { ...SHOP_DATA[0].items[7], qty: 1 };
+      const item1 = { ...SHOP_DATA.hats.items[2], qty: 1 };
+      const item2 = { ...SHOP_DATA.hats.items[5], qty: 1 };
+      const item3 = { ...SHOP_DATA.hats.items[7], qty: 1 };
       const initialState = [item1, item2, item3];
 
       const newState = cartReducer(initialState, removeItemAction(item1.id));

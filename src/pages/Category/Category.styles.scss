@@ -1,0 +1,19 @@
+.category {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: 2.375rem;
+    margin: 0 auto 1.875rem;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.625rem;
+
+    .collection-item {
+      margin-bottom: 1.875rem;
+    }
+  }
+}
