@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest --verbose --watch",
-    "dev": "webpack serve --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "dev": "webpack serve --open --config webpack.dev.js --fix",
+    "build": "webpack --config webpack.prod.js --fix"
   },
   "repository": {
     "type": "git",
