@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { auth } from "../../services/firebase.utils";
 
 import "./Header.styles.scss";
-import Logo from "../../assets/1444714083.svg";
+import { ReactComponent as Logo } from "../../assets/1444714083.svg";
 import { CartIcon, CartDropdown } from "../components";
 
 const userSelector = (state) => state.user.currentUser;

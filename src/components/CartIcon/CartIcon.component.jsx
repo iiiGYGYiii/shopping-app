@@ -3,7 +3,7 @@ import { createSelector } from "reselect";
 
 import "./CartIcon.styles.scss";
 
-import ShoppingIcon from "../../assets/shopping-bag.svg";
+import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 
 const useMemoizedTotalItems = () => {
   const cartItemSelector = (state) => state.cart;

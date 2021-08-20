@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "Frontend of a Shopping App created with React and bundled with WebPack",
   "main": "src/index.js",
-  "scripts": {
-    "test": "jest --verbose --watch",
-    "dev": "webpack serve --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iiiGYGYiii/shopping-app.git"
@@ -22,56 +17,47 @@
   "bugs": {
     "url": "https://github.com/iiiGYGYiii/shopping-app/issues"
   },
-  "homepage": "https://github.com/iiiGYGYiii/shopping-app#readme",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "firebase": "^8.9.1",
+    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.12.2",
     "react-redux": "^7.2.4",
+    "react-scripts": "4.0.3",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
-    "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0",
     "wouter": "^2.7.4"
   },
-  "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
-    "@babel/plugin-transform-runtime": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "babel-jest": "^27.0.6",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
-    "css-minimizer-webpack-plugin": "^3.0.2",
-    "eslint": "^7.32.0",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-webpack-plugin": "^3.0.1",
-    "html-webpack-plugin": "^5.3.2",
-    "jest": "^27.0.6",
-    "mini-css-extract-plugin": "^2.2.0",
-    "react-svg-loader": "^3.0.3",
-    "sass": "^1.37.5",
-    "sass-loader": "^12.1.0",
-    "style-loader": "^3.2.1",
-    "webpack": "^5.49.0",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.8.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
