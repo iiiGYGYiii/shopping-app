@@ -1,11 +1,17 @@
 import { useState } from "react";
-import { Link } from "wouter";
 import { useSelector } from "react-redux";
 import { auth } from "../../services/firebase.utils";
 
-import "./Header.styles.scss";
+import {
+  HeaderContainer,
+  OptionLink,
+  OptionsContainer,
+  LogoContainer,
+} from "./Header.styles";
+
 import { ReactComponent as Logo } from "../../assets/1444714083.svg";
 import { CartIcon, CartDropdown } from "../components";
+import { Link } from "wouter";
 
 const userSelector = (state) => state.user.currentUser;
 
@@ -14,30 +20,26 @@ const Header = () => {
   const handleCartClick = () => setShow((prevState) => !prevState);
   const currentUser = useSelector(userSelector);
   return (
-    <nav className="header">
+    <HeaderContainer>
       <Link to="/">
-        <a className="logo-container">
+        <LogoContainer>
           <Logo className="logo" />
-        </a>
+        </LogoContainer>
       </Link>
-      <div className="options">
-        <Link className="option" to="/shop">
-          SHOP
-        </Link>
-        <Link className="option" to="/contact">
-          CONTACT
-        </Link>
+      <OptionsContainer>
+        <OptionLink to="/shop">SHOP</OptionLink>
+        <OptionLink to="/contact">CONTACT</OptionLink>
         {currentUser ? (
-          <div className="option" onClick={async () => await auth.signOut()}>
+          <OptionLink as="div" onClick={async () => await auth.signOut()}>
             LOG OUT
-          </div>
+          </OptionLink>
         ) : (
-          <Link to="/sign-in">LOG IN</Link>
+          <OptionLink to="/sign-in">LOG IN</OptionLink>
         )}
         <CartIcon handleClick={handleCartClick} />
-      </div>
+      </OptionsContainer>
       {show && <CartDropdown />}
-    </nav>
+    </HeaderContainer>
   );
 };
 
