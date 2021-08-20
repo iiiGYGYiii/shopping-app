@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Frontend of a Shopping App created with React and bundled with WebPack",
   "main": "src/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iiiGYGYiii/shopping-app.git"
