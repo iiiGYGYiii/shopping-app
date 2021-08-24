@@ -1,17 +1,13 @@
 import { useSelector } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectShopItems } from "../../redux/reducers/shop/shop.selectors";
 
 import "./CollectionsOverview.styles.scss";
 
 import { PreviewCollection } from "../../components/components";
 
-const collectionSelector = createStructuredSelector({
-  collections: selectShopItems,
-});
+const collectionSelector = (state) => state.shop;
 
 const CollectionsOverview = () => {
-  const { collections } = useSelector(collectionSelector);
+  const collections = useSelector(collectionSelector);
   return (
     <div className="collections-overview">
       {Object.values(collections).map(({ id, ...otherCollectionProps }) => (
