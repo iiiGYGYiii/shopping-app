@@ -47,7 +47,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       items,
     };
   });
-  transformedCollection.reduce((p, c) => {
+  return transformedCollection.reduce((p, c) => {
     p[c.title.toLowerCase()] = c;
     return p;
   }, {});
