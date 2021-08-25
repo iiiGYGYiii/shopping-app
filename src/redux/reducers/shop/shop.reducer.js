@@ -4,7 +4,7 @@ import {
 } from "../../../services/firebase.utils";
 import { SHOP_DATA } from "../../../pages/Shop/Shop.data";
 
-const SHOP_TYPES = {
+export const SHOP_TYPES = {
   FETCH_COLLECTIONS_START: "shop/FETCH_COLLECTIONS_START",
   FETCH_COLLECTIONS_SUCCESS: "shop/FETCH_COLLECTIONS_SUCCESS",
   FETCH_COLLECTIONS_FAIL: "shop/FETCH_COLLECTIONS_FAIL",

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Route } from "wouter";
-import { fetchCollectionsStartAsync } from "../../redux/reducers/shop/shop.reducer";
+import { fetchCollectionsStart } from "../../redux/reducers/shop/shop.reducer";
 import { selectIsCollectionFetching } from "../../redux/reducers/shop/shop.selectors";
 
 import "./Shop.styles.scss";
@@ -15,7 +15,7 @@ const ShopPage = () => {
   const isCollectionFetching = useSelector(selectIsCollectionFetching);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCollectionsStartAsync());
+    dispatch(fetchCollectionsStart());
   }, [dispatch]);
 
   return (
