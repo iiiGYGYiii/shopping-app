@@ -1,37 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Route } from "wouter";
-import { useDispatch } from "react-redux";
-import {
-  convertCollectionsSnapshotToMap,
-  firestore,
-} from "../../services/firebase.utils";
-import { updateCollections } from "../../redux/reducers/shop/shop.reducer";
+import { fetchCollectionsStart } from "../../redux/reducers/shop/shop.reducer";
+import { selectIsCollectionFetching } from "../../redux/reducers/shop/shop.selectors";
 
 import "./Shop.styles.scss";
 
 import { CategoryPage } from "../pages";
 import { CollectionsOverview, WithSpinner } from "../../components/components";
+import { useDispatch, useSelector } from "react-redux";
 
 const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 
 const ShopPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const isCollectionFetching = useSelector(selectIsCollectionFetching);
   const dispatch = useDispatch();
   useEffect(() => {
-    const retrieveSnapshot = async () => {
-      const collectionRef = firestore.collection("collections");
-      const snapShot = await collectionRef.get();
-      const collectionsMap = convertCollectionsSnapshotToMap(snapShot);
-      dispatch(updateCollections(collectionsMap));
-      setIsLoading(false);
-    };
-    retrieveSnapshot();
+    dispatch(fetchCollectionsStart());
   }, [dispatch]);
 
   return (
     <div className="shop-page">
       <Route exact path="/">
-        <CollectionsOverviewWithSpinner isLoading={isLoading} />
+        <CollectionsOverviewWithSpinner isLoading={isCollectionFetching} />
       </Route>
       <Route path="/:categoryId">
         {({ categoryId }) => <CategoryPage categoryId={categoryId} />}

@@ -3,9 +3,14 @@ import { useForm } from "react-hook-form";
 import "./LogIn.styles.scss";
 
 import { FormInput, CustomButton } from "../components";
-import { auth, signInWithGoogle } from "../../services/firebase.utils";
+import {
+  googleLogInStart,
+  emailLogInStart,
+} from "../../redux/reducers/user/user.reducer";
+import { useDispatch } from "react-redux";
 
 const LogIn = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -15,12 +20,8 @@ const LogIn = () => {
   } = useForm();
   const submitAction = handleSubmit(async (data) => {
     const { email, password } = data;
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
+    dispatch(emailLogInStart({ email, password }));
+    reset();
   });
   return (
     <div className="log-in">
@@ -44,7 +45,11 @@ const LogIn = () => {
         {errors.password && `${errors.password.message}`}
         <div className="buttons">
           <CustomButton type="submit">Log In</CustomButton>
-          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+          <CustomButton
+            type="button"
+            onClick={() => dispatch(googleLogInStart())}
+            isGoogleSignIn
+          >
             Log In with Google
           </CustomButton>
         </div>

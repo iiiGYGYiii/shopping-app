@@ -2,11 +2,12 @@ import { addItemToCart, increaseItemQty, decreaseItemQty } from "../utils";
 
 const initialState = [];
 
-const actions = {
+export const actions = {
   ADD_ITEM: "cart/ADD_ITEM",
   INCREASE_ITEM_QTY: "cart/INCREASE_ITEM_QTY",
   DECREASE_ITEM_QTY: "cart/DECREASE_ITEM_QTY",
   REMOVE_ITEM: "cart/REMOVE_ITEM",
+  CLEAR_CART: "cart/CLEAR_CART",
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -19,6 +20,8 @@ const cartReducer = (state = initialState, action) => {
       return decreaseItemQty(state, action.payload);
     case actions.REMOVE_ITEM:
       return state.filter((item) => item.id !== action.payload);
+    case actions.CLEAR_CART:
+      return initialState;
     default:
       return state;
   }
@@ -48,5 +51,9 @@ export const removeItemAction = (id) => ({
   type: actions.REMOVE_ITEM,
   payload: id,
 });
+
+export const clearCartAction = {
+  type: actions.CLEAR_CART,
+};
 
 export default cartReducer;
