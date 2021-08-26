@@ -4,52 +4,44 @@ const initialState = {
 };
 
 export const userActionTypes = {
-  SET_CURRENT_USER: "user/SET_CURRENT_USER",
   GOOGLE_LOG_IN_START: "user/GOOGLE_LOG_IN_START",
-  GOOGLE_LOG_IN_SUCCESS: "user/GOOGLE_LOG_IN_SUCCESS",
-  GOOGLE_LOG_IN_FAIL: "user/GOOGLE_LOG_IN_FAIL",
   EMAIL_LOG_IN_START: "user/EMAIL_LOG_IN_START",
-  EMAIL_LOG_IN_SUCCESS: "user/EMAIL_LOG_IN_SUCCESS",
-  EMAIL_LOG_IN_FAIL: "user/EMAIL_LOG_IN_FAIL",
+  LOG_IN_SUCCESS: "user/LOG_IN_SUCCESS",
+  LOG_IN_FAIL: "user/LOG_IN_FAIL",
+  CHECK_USER_SESSION: "user/CHECK_USER_SESSION",
+  LOG_OUT_START: "user/LOG_OUT_START",
+  LOG_OUT_SUCCESS: "user/LOG_OUT_SUCCESS",
+  LOG_OUT_FAIL: "user/LOG_OUT_FAIL",
+  SIGN_UP_START: "user/SIGN_UP_START",
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case userActionTypes.EMAIL_LOG_IN_SUCCESS:
-    case userActionTypes.GOOGLE_LOG_IN_SUCCESS:
+    case userActionTypes.LOG_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
         error: null,
       };
-    case userActionTypes.EMAIL_LOG_IN_FAIL:
-    case userActionTypes.GOOGLE_LOG_IN_FAIL:
+    case userActionTypes.LOG_IN_FAIL:
+    case userActionTypes.LOG_OUT_FAIL:
       return {
         ...state,
         error: action.payload,
+      };
+    case userActionTypes.LOG_OUT_SUCCESS:
+      return {
+        ...state,
+        currentUser: null,
+        error: null,
       };
     default:
       return state;
   }
 };
 
-export const setCurrentUser = (currentUser) => ({
-  type: userActionTypes.SET_CURRENT_USER,
-  payload: currentUser,
-});
-
 export const googleLogInStart = () => ({
   type: userActionTypes.GOOGLE_LOG_IN_START,
-});
-
-export const googleLogInSuccess = (user) => ({
-  type: userActionTypes.GOOGLE_LOG_IN_SUCCESS,
-  payload: user,
-});
-
-export const googleLogInFailure = (error) => ({
-  type: userActionTypes.GOOGLE_LOG_IN_FAIL,
-  payload: error,
 });
 
 export const emailLogInStart = (credentials) => ({
@@ -57,14 +49,36 @@ export const emailLogInStart = (credentials) => ({
   payload: credentials,
 });
 
-export const emailLogInSuccess = (user) => ({
-  type: userActionTypes.EMAIL_LOG_IN_SUCCESS,
+export const logInSuccess = (user) => ({
+  type: userActionTypes.LOG_IN_SUCCESS,
   payload: user,
 });
 
-export const emailLogInFailure = (error) => ({
-  type: userActionTypes.EMAIL_LOG_IN_FAIL,
+export const logInFailure = (error) => ({
+  type: userActionTypes.LOG_IN_FAIL,
   payload: error,
+});
+
+export const checkUserSession = {
+  type: userActionTypes.CHECK_USER_SESSION,
+};
+
+export const logOutStart = {
+  type: userActionTypes.LOG_OUT_START,
+};
+
+export const logOutSuccess = {
+  type: userActionTypes.LOG_OUT_SUCCESS,
+};
+
+export const logOutFail = (error) => ({
+  type: userActionTypes.LOG_OUT_FAIL,
+  payload: error,
+});
+
+export const signUpStart = (credentials) => ({
+  type: userActionTypes.SIGN_UP_START,
+  payload: credentials,
 });
 
 export default userReducer;

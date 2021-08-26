@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import "./LogIn.styles.scss";
 
 import { FormInput, CustomButton } from "../components";
-import { auth } from "../../services/firebase.utils";
-import { googleLogInStart } from "../../redux/reducers/user/user.reducer";
+import {
+  googleLogInStart,
+  emailLogInStart,
+} from "../../redux/reducers/user/user.reducer";
 import { useDispatch } from "react-redux";
 
 const LogIn = () => {
@@ -18,12 +20,8 @@ const LogIn = () => {
   } = useForm();
   const submitAction = handleSubmit(async (data) => {
     const { email, password } = data;
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
+    dispatch(emailLogInStart({ email, password }));
+    reset();
   });
   return (
     <div className="log-in">

@@ -1,36 +1,26 @@
-import "./SignUp.styles.scss";
-
-import { auth, createUserProfileDocument } from "../../services/firebase.utils";
-
-import { FormInput, CustomButton } from "../components";
 import { useForm } from "react-hook-form";
 import {
   passwordConfirmation,
   passwordValidations,
 } from "../../utils/validation.utils";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../redux/reducers/user/user.reducer";
+
+import "./SignUp.styles.scss";
+
+import { FormInput, CustomButton } from "../components";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const createUserWithEmailAndPassword = (data) => dispatch(signUpStart(data));
   const {
     register,
     handleSubmit,
     watch,
     getValues,
-    reset,
     formState: { errors },
   } = useForm();
-  const submitAction = handleSubmit(async (data) => {
-    const { email, password, displayName } = data;
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await createUserProfileDocument(user, { displayName });
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  const submitAction = handleSubmit(createUserWithEmailAndPassword);
   return (
     <div className="sign-up">
       <h2 className="title">I do not have an account.</h2>

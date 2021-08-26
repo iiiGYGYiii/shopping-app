@@ -12,13 +12,22 @@ const firebaseConfig = {
   measurementId: "G-695313N07T",
 };
 
+firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
-
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
-
-  if (!snapShot.exist) {
+  if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
     try {
@@ -35,7 +44,19 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-firebase.initializeApp(firebaseConfig);
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = firestore.collection(collectionKey);
+  const batch = firestore.batch();
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
 
 export const convertCollectionsSnapshotToMap = (collections) => {
   const transformedCollection = collections.docs.map((doc) => {
@@ -53,27 +74,12 @@ export const convertCollectionsSnapshotToMap = (collections) => {
   }, {});
 };
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({
-  prompt: "select_account",
-});
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
-
-export const addCollectionAndDocuments = async (
-  collectionKey,
-  objectsToAdd
-) => {
-  const collectionRef = firestore.collection(collectionKey);
-  const batch = firestore.batch();
-  objectsToAdd.forEach((obj) => {
-    const newDocRef = collectionRef.doc();
-    batch.set(newDocRef, obj);
+export const getCurrentUser = () =>
+  new Promise((res, rej) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      res(userAuth);
+    }, rej);
   });
-
-  return await batch.commit();
-};
 
 export default firebase;
