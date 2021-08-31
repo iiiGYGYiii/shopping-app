@@ -1,4 +1,2 @@
-/node_modules/
-.env
-Procfile
-/build/
+node_modules
+client/node_modules
